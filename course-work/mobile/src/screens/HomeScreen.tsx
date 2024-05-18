@@ -27,6 +27,13 @@ export const HomeScreen: FC<Props> = ({navigation}) => {
         <Search navigation={navigation} />
 
         {loading && <Loading />}
+        {!loading && !cards.length && (
+          <View className="flex flex-1 justify-center">
+            <Text className="text-white mr-auto ml-auto">
+              No cities added yet!
+            </Text>
+          </View>
+        )}
         {!loading && cards && (
           <ForecastCards
             cards={cards}
