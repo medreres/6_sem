@@ -10,7 +10,7 @@ export const useCards: UseCards = () => {
 
   const {fetchCards} = useForecastCards(user?.cities || []);
   const [cards, setCards] = useState<ForecastCard[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   /**
    * * if cities now more than cards, then find the difference and fetch those cities
