@@ -1,20 +1,20 @@
 name: weather
 version: '3.8'
 services:
-  web:
-    build:
-      context: ./web
-      target: development
-    container_name: web
-    environment:
-      CHOKIDAR_USEPOLLING: true
-    volumes:
-      - /app/node_modules
-      - ./web:/app
-    ports:
-      - 3000:3000
-    depends_on:
-      - server
+  # web:
+  #   build:
+  #     context: ./web
+  #     target: development
+  #   container_name: web
+  #   environment:
+  #     CHOKIDAR_USEPOLLING: true
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./web:/app
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - server
 
   server:
     env_file:
