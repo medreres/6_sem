@@ -1,0 +1,6 @@
+<div class="column">
+  <div class="row wrap gap-1">
+    <app-card [card]="card" [balance]="balance" [onDeposit]="handleDeposit.bind(this)" [onWithdrawal]="handleWithdrawal.bind(this)" />
+    <app-transaction [transactions]="transactions" />
+  </div>
+</div>

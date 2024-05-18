@@ -1,0 +1,70 @@
+###################
+# DEVELOPMENT
+###################
+FROM node:18.12.0-slim as development
+RUN apt-get update
+RUN apt-get install -y openssl
+
+# Create app directory
+WORKDIR /app
+
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY package*.json ./
+
+# Install app dependencies
+RUN npm i
+
+COPY prisma ./prisma
+COPY src ./src
+COPY .env.development ./
+COPY tsconfig*.json ./
+
+RUN npx prisma generate
+
+CMD [ "npm", "run", "start:dev" ]
+
+EXPOSE 4000
+
+###################
+# BUILD FOR PRODUCTION
+###################
+
+FROM node:18.12.0-slim as build
+
+WORKDIR /app
+
+COPY package*.json ./
+
+# In order to run `npm run build` we need access to the Nest CLI which is a dev dependency. In the previous development stage we ran `npm ci` which installed all dependencies, so we can copy over the node_modules directory from the development image
+COPY --from=development /app/node_modules ./node_modules
+
+COPY . .
+
+RUN npx prisma generate
+
+# Run the build command which creates the production bundle
+RUN npm run build
+
+# Set NODE_ENV environment variable
+ENV NODE_ENV production
+
+# Running `npm ci` removes the existing node_modules directory and passing in --only=production ensures that only the production dependencies are installed. This ensures that the node_modules directory is as optimized as possible
+RUN npm ci --only=production && npm cache clean --force
+
+USER node
+
+###################
+# PRODUCTION
+###################
+
+FROM node:18.12.0-slim As production
+RUN apt-get update
+RUN apt-get install -y openssl
+
+# Copy the bundled code from the build stage to the production image
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/.env.production ./
+
+# Start the server using the production build
+CMD [ "node", "dist/src/main.js" ]

@@ -1,0 +1,104 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type City {
+  name: String!
+  address: String!
+}
+
+type CityWithCoordinates {
+  name: String!
+  address: String!
+  lat: Float!
+  lon: Float!
+}
+
+type GeneralResponse {
+  message: String!
+}
+
+type Token {
+  id: Int!
+  email: String!
+  cities: [CityWithCoordinates!]!
+}
+
+type Cities {
+  cities: [String!]!
+}
+
+type Weather {
+  id: Int!
+  main: String!
+  description: String!
+  icon: String!
+}
+
+type CurrentForecast {
+  timestamp: String!
+  feelsLike: Float!
+  humidity: Int!
+  weather: [Weather!]!
+}
+
+type Temperature {
+  min: Float!
+  max: Float!
+  day: Float!
+  night: Float!
+}
+
+type DailyForecast {
+  timestamp: String!
+  sunrise: String!
+  sunset: String!
+  windSpeed: Float!
+  uvi: Float!
+  precipitation: Float!
+  temperature: Temperature!
+  humidity: Int!
+  weather: [Weather!]!
+}
+
+type HourlyForecast {
+  timestamp: String!
+  temperature: Float!
+  humidity: Int!
+  weather: [Weather!]!
+}
+
+type Forecast {
+  daily: [DailyForecast!]!
+  current: CurrentForecast!
+  hourly: [HourlyForecast!]!
+  city: City!
+}
+
+type Query {
+  findCity(input: CityInput!): [City!]!
+  me: Token!
+  forecast(input: CityInput!): Forecast!
+  forecasts(input: [CityInput!]!): [Forecast!]!
+}
+
+input CityInput {
+  cityName: String!
+}
+
+type Mutation {
+  register(input: Auth!): GeneralResponse!
+  login(input: Auth!): GeneralResponse!
+  logout: GeneralResponse!
+  addCity(input: WeatherInput!): Cities!
+  removeCity(input: WeatherInput!): Cities!
+}
+
+input Auth {
+  email: String!
+  password: String!
+}
+
+input WeatherInput {
+  cityName: String!
+}

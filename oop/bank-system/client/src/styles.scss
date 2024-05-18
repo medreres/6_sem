@@ -1,0 +1,78 @@
+@import './styles/variables.scss';
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+body, p, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh !important;
+  max-height: 100vh !important;
+}
+
+html, body, app-root {
+  height: 100%;
+}
+
+
+app-root {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+@for $i from 1 through 5 {
+  .mt-#{$i * 5} {
+    margin-top: $i * 5px;
+  }
+}
+
+@for $i from 1 through 5 {
+  .mb-#{$i} {
+    margin-bottom: $i * 5px;
+  }
+}
+
+@for $i from 1 through 5 {
+  .gap-#{$i} {
+    gap: $i * 1px;
+  }
+}
+
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.f {
+  display: flex;
+}
+
+.f-1 {
+  flex: 1
+}
+
+.full-center  {
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: hidden;
+}

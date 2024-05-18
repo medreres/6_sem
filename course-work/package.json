@@ -1,0 +1,12 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "scripts": {
+    "server:test": "cd server && npm run test",
+    "server:format": "cd server && npm run format",
+    "server:lint": "cd server && npm run lint"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3"
+  }
+}

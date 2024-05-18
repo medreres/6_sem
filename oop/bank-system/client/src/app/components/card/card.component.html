@@ -1,0 +1,28 @@
+<p-card
+[header]="card?.cardNumber"
+>
+<div class="f-1 space-between">
+  <p>11/24</p>
+  <p>123</p>
+</div>
+<div>Balance: {{ balance }}$</div>
+</p-card>
+
+<div class="f full-center column gap-5 mt-5">
+  <span class="p-input-icon-right">
+    <input [(ngModel)] = 'amount' id="amount" pInputText type="number"/>
+    <i class="pi pi-dollar"></i>
+  </span>
+  <div class="row">
+    <button 
+    (click)="withdrawHandler()" 
+    pButton 
+    pRipple 
+    class="p-button-danger">Withdraw</button>
+    <button  
+    (click)="depositHandler()"
+    pButton 
+    pRipple 
+    class="p-button-success">Deposit</button>
+  </div>
+</div>

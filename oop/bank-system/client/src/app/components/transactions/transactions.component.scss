@@ -1,0 +1,27 @@
+.red {
+  color: red
+}
+
+.green {
+  color: green;
+}
+
+.transactions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 15px;
+  justify-content: center;
+
+  height: 50vh;
+  overflow: scroll;
+  border: 1px solid black;
+  padding: 15px;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 30%;
+  padding: 10px;
+}

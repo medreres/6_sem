@@ -1,0 +1,6 @@
+<div class="transactions">
+  <div class="transaction" [ngClass]="{ 'red': transaction.status === 'FAIL', 'green': transaction.status === 'SUCCESS' && transaction.amountInCents > 0}" *ngFor="let transaction of transactions">
+    <i class="pi" [ngClass]="{ 'pi-arrow-circle-down': transaction.amountInCents < 0, 'pi-arrow-circle-up': transaction.amountInCents > 0}"></i>
+    <p>{{ (transaction.amountInCents / 100).toFixed(2) }} $</p>
+  </div>
+</div>
