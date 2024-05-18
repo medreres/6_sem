@@ -1,3 +1,9 @@
+# Text part
+[Click](https://docs.google.com/document/d/1I7MIvjBsWfOs0q-xuF9awrnFjKNt8Qln-m7XNfIpFdM/edit#heading=h.35qipulhb4oj)
+
+# Video part
+[Click](https://www.loom.com/share/19e607a647aa4a28bb0b20bae92f13e9)
+
 # Description
 
 Weather app, that allows you to search for forecasts and add them into following.
@@ -42,7 +48,7 @@ Now before each commit, hook will run tests and, if they succeed, add the commit
 
 To run the app just type
 
-`docker compose -f docker-compose.dev.yml --env-file=./server/.env.development up`
+`docker compose -f docker-compose.yml --env-file=./server/.env.development up`
 
 You can add -d flag to run in background
 
