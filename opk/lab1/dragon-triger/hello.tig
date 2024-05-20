@@ -1,1 +1,6 @@
-print("Hello World!\n")
+let
+    function printHello() =
+        print("Hello World!\n")
+in
+    printHello()
+end
