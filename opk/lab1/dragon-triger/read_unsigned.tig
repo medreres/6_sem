@@ -1,0 +1,36 @@
+let
+  function is_numerical(n: string) : int =
+    let
+      var asci_code := ord(n)
+    in
+        asci_code >= ord("0") & asci_code <= ord("9")
+    end
+
+  function is_eof(n: string) : int =
+    if ord(n) = ord("\n")
+    then
+      1
+    else
+      0
+
+  function read_unsigned() : int =
+  let
+      var sum := 0
+      var cur_char := ""
+  in
+      while sum <> -1 do (
+        cur_char := getchar();
+
+        if is_eof(cur_char) <> 0 then break
+        else if is_numerical(cur_char) <> 0 then
+          sum := ord(cur_char) - ord("0") + sum * 10
+        else sum := -1
+      );
+      sum
+  end
+  
+  var a : int := read_unsigned()
+in
+  print_int(a*2);
+  print("\n")
+end
