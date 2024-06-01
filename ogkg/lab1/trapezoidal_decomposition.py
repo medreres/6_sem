@@ -309,6 +309,8 @@ def plot_trapezoid(edges: list[Edge]):
     for edge in edges:
         plot.plot([edge.start_point.x,edge.end_point.x],[edge.start_point.y,edge.end_point.y], linestyle='-')
 
+
+# ray-casting algorithm
 def is_point_inside_polygon(point:Point, edges: list[Edge]):
     count = 0
     for edge in edges:
@@ -319,8 +321,21 @@ def is_point_inside_polygon(point:Point, edges: list[Edge]):
         
         
 if __name__ == '__main__':
-    vertices = [Point(0, 1.5), Point(1, 3.5), Point(3.5, 4), Point(5, 2), Point(2.5, 0)]
-    edges = [Edge(vertices[0], vertices[1]), Edge(vertices[1], vertices[2]), Edge(vertices[2], vertices[3]), Edge(vertices[3], vertices[4]), Edge(vertices[4], vertices[0])]
+    vertices = [
+        Point(0, 1.5),
+        Point(1, 3.5),
+        Point(3.5, 4),
+        Point(5, 2),
+        Point(2.5, 0)
+        ]
+    
+    edges = [
+        Edge(vertices[0],vertices[1]),
+        Edge(vertices[1], vertices[2]),
+        Edge(vertices[2], vertices[3]),
+        Edge(vertices[3], vertices[4]),
+        Edge(vertices[4], vertices[0])
+        ]
 
     points = []
     for i in range(5):
@@ -330,9 +345,10 @@ if __name__ == '__main__':
     points.append(Point(0, 1.5))
     points.append(Point(1,5))
     points.append(Point(1,2))
+    points.append(Point(2,2))
     plot_plane(edges, points)
     merge_sort(vertices)
-    tree = Tree(decompose_root(edges, vertices, get_lower_edge(vertices), get_upper_edge(vertices),get_right_edge(vertices), get_left_edge(vertices)))
+    tree = Tree(decompose_root(edges, vertices, get_lower_edge(vertices), get_upper_edge(vertices), get_right_edge(vertices), get_left_edge(vertices)))
     for point in points:
         if not is_point_inside_polygon(point, edges):
             print(f'Point {point} is outside of polygon')
@@ -340,7 +356,3 @@ if __name__ == '__main__':
             tree.locate(point)
     tree.display()
     
-    
-
-        
-        
