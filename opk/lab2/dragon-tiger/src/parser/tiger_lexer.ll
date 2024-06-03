@@ -24,7 +24,7 @@ static std::string string_buffer;
 lineterminator  \r|\n|\r\n
 blank           [ \t\f]
 id              [a-zA-Z][_0-9a-zA-Z]*
-int             [0-9]
+int             [0-9]+
 
  /* Declare two start conditions (sub-automate states) to handle
     strings and comments */
